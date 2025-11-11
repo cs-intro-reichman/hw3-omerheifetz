@@ -36,7 +36,6 @@ public class LoanCalc {
 			loan1 = (loan1 - payment)*rate1;
 			counter++;
 		}
-		loan1 = (double) Math.round(loan1);
 		return loan1;
 	}
 	
@@ -49,7 +48,7 @@ public class LoanCalc {
 		// Replace the following statement with your code
 		iterationCounter = 0;
 		double g = loan/n;
-		while (endBalance(loan, rate, n, g)>0) {
+		while (endBalance(loan, rate, n, g)>=epsilon) {
 			g = g + epsilon;
 			iterationCounter++;
 		}
