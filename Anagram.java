@@ -34,7 +34,6 @@ public class Anagram {
 		String buildWord = "";
 		int place = 0;
 		boolean isLetterAppear = true;
-		boolean checkAnagram = true;
 		if (strCheck1.length() != strCheck2.length()) {
 			return false;
 		}
@@ -64,7 +63,6 @@ public class Anagram {
 	// as is. For example, the string "What? No way!" becomes "whatnoway"
 	public static String preProcess(String str) {
 		// Replace the following statement with your code
-		String wordProcessed = "";
 		String checkIfLetter = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
 		String strBuild = "";
 		String strLower = "";

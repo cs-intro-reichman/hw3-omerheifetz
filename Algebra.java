@@ -124,8 +124,6 @@ public class Algebra {
 			}
 			return mana;
 		}
-		
-
 	}
 
 	// Returns x1 % x2
