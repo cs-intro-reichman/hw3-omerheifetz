@@ -29,7 +29,33 @@ public class Anagram {
 	// Returns true if the two given strings are anagrams, false otherwise.
 	public static boolean isAnagram(String str1, String str2) {
 		// Replace the following statement with your code
-		return false;
+		String strCheck1 = preProcess(str1);
+		String strCheck2 = preProcess(str2);
+		String buildWord = "";
+		int place = 0;
+		boolean isLetterAppear = true;
+		if (strCheck1.length() != strCheck2.length()) {
+			return false;
+		}
+		while (place<strCheck1.length() && isLetterAppear==true) {
+			isLetterAppear = false;
+			for (int j=0; j<strCheck2.length(); j++) {
+				if (strCheck1.charAt(place) == strCheck2.charAt(j)) { 
+					isLetterAppear = true;
+					for (int f=0; f<strCheck2.length(); f++) {
+						if (f!=j) {
+							buildWord = buildWord + strCheck2.charAt(f);
+						}
+					}
+					j=strCheck2.length()+1;
+					strCheck2 = buildWord;
+					buildWord = "";
+				}
+			}
+			place++;
+		}
+		if (place == strCheck1.length()) return true;
+		else return false;
 	}
 	   
 	// Returns a preprocessed version of the given string: all the letter characters are converted
@@ -37,13 +63,41 @@ public class Anagram {
 	// as is. For example, the string "What? No way!" becomes "whatnoway"
 	public static String preProcess(String str) {
 		// Replace the following statement with your code
-		return "";
+		String checkIfLetter = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
+		String strBuild = "";
+		String strLower = "";
+		for (int i=0; i< str.length(); i++) {
+			if (checkIfLetter.indexOf(str.charAt(i)) !=-1) {
+				strBuild = strBuild + str.charAt(i);
+			}
+		}
+		for (int i=0; i<strBuild.length(); i++) {
+			strLower = strLower + Character.toLowerCase(strBuild.charAt(i));
+		}
+		return strLower;
 	} 
 	   
 	// Returns a random anagram of the given string. The random anagram consists of the same
 	// characters as the given string, re-arranged in a random order. 
 	public static String randomAnagram(String str) {
 		// Replace the following statement with your code
-		return "";
+		String strResult = "";
+		String strSource = str;
+		String buildWord = "";
+		int randomPlace = 0;
+		for (int i=0; i<str.length();i++) {
+			randomPlace = (int) (Math.random()*(strSource.length()-1));
+			strResult = strResult + strSource.charAt(randomPlace);
+			if (strResult.length()<str.length()) {
+			for (int j=0; j<strSource.length(); j++) {
+				if (j!=randomPlace) {
+					buildWord = buildWord + strSource.charAt(j);
+				}
+			}
+		}
+			strSource = buildWord;
+			buildWord = "";
+		}
+		return strResult;
 	}
 }
